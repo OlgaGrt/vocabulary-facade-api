@@ -8,6 +8,6 @@
   },
   "dependencies": {
     "express": "^4.18.2",
-    "xmlhttprequest": "^1.8.0"
+    "axios": "^1.3.5"
   }
 }
