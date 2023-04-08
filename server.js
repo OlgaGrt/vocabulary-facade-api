@@ -1,10 +1,9 @@
 let express = require('express');
-const axios = require('axios')
-
+const axios = require('axios');
 let app = express();
 app.get('/vocabulary/:word', function (req, res) {
 
-    word = req.params.word;
+    let word = req.params.word;
 
     Promise.all([
         axios.get('https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=dict.1.1.20230405T111113Z.f976a41631fb1995.eb413c80abcf5570d666eb4a5d371e328fea0271&lang=en-ru&text=' + word)
@@ -104,8 +103,7 @@ app.get('/vocabulary/:word', function (req, res) {
                     }
                 });
 
-            res.sendStatus(200);
-            res.send();
+            res.send({'word': word, 'translate': translate, 'meaning': meaning, 'example': example});
         })
         .catch(error => {
             res.sendStatus(400);
